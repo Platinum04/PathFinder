@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class GoogleMapsService : MonoBehaviour
 {
-    private const string API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your API Key
+    private const string API_KEY = "AIzaSyBeuY4Zwi0eslU4NBBcHIovxrx4cWIcib0"; // Replace with your API Key
     public string destinationAddress;
     public float destinationLat;
     public float destinationLon;
