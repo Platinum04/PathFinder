@@ -50,6 +50,7 @@
 	</assembly>
 	<assembly fullname="Unity.TextMeshPro">
 		<type fullname="TMPro.TextMeshProUGUI" preserve="nothing"/>
+		<type fullname="TMPro.TMP_InputField" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.XR.ARCore">
 		<type fullname="UnityEngine.XR.ARCore.ARCoreLoader" preserve="nothing"/>
@@ -69,7 +70,6 @@
 		<type fullname="UnityEngine.XR.Interaction.Toolkit.Inputs.InputActionManager" preserve="nothing"/>
 		<type fullname="UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.XRDeviceSimulatorSettings" preserve="nothing"/>
 		<type fullname="UnityEngine.XR.Interaction.Toolkit.InteractionLayerSettings" preserve="nothing"/>
-		<type fullname="UnityEngine.XR.Interaction.Toolkit.UI.XRUIInputModule" preserve="nothing"/>
 		<type fullname="UnityEngine.XR.Interaction.Toolkit.XRInteractionManager" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.XR.Management">
@@ -123,6 +123,7 @@
 	<assembly fullname="UnityEngine.UI">
 		<type fullname="UnityEngine.EventSystems.EventSystem" preserve="nothing"/>
 		<type fullname="UnityEngine.EventSystems.EventTrigger" preserve="nothing"/>
+		<type fullname="UnityEngine.EventSystems.StandaloneInputModule" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Button" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.CanvasScaler" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.ContentSizeFitter" preserve="nothing"/>
@@ -132,6 +133,7 @@
 		<type fullname="UnityEngine.UI.InputField" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.LayoutElement" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Mask" preserve="nothing"/>
+		<type fullname="UnityEngine.UI.RectMask2D" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Scrollbar" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.ScrollRect" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Text" preserve="nothing"/>
