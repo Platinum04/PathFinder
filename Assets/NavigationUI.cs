@@ -3,34 +3,32 @@ using UnityEngine.UI;
 
 public class NavigationUI : MonoBehaviour
 {
-    // UI Elements to assign in Unity
     public InputField destinationInput;
     public Button startNavButton;
     public Text statusText;
 
     private LocationFetcher locationFetcher;
 
-    // Initialize the UI setup
     void Start()
     {
-        // Find the LocationFetcher script
+        // Find LocationFetcher and register button listener
         locationFetcher = FindObjectOfType<LocationFetcher>();
-
-        // Add listener to the Start Navigation button
         startNavButton.onClick.AddListener(OnNavigateClick);
     }
 
-    // Called when the Start Navigation button is clicked
+    // Method Triggered by Button
     public void OnNavigateClick()
     {
+        Debug.Log("Button Clicked: Start Navigation Triggered");  // Debug Statement
+
         if (locationFetcher != null)
         {
-            locationFetcher.OnSearchButtonClicked();  // Trigger location fetching
+            locationFetcher.OnSearchButtonClicked();  // Trigger Location Search
         }
         else
         {
             statusText.text = "LocationFetcher not found.";
-            Debug.LogError("LocationFetcher component is missing!");
+            Debug.LogError("Error: LocationFetcher component is missing!");
         }
     }
 }
