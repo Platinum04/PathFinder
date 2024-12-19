@@ -7,7 +7,8 @@ public class NavigationUI : MonoBehaviour
     public Button startNavButton;
     public Text statusText;
 
-    private LocationFetcher locationFetcher;
+    public LocationFetcher locationFetcher;
+    public ARNavigation aRNavigation;
 
     void Start()
     {
@@ -27,7 +28,6 @@ public class NavigationUI : MonoBehaviour
         }
         else
         {
-            statusText.text = "LocationFetcher not found.";
             Debug.LogError("Error: LocationFetcher component is missing!");
         }
     }

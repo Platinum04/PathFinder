@@ -1,89 +1,68 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;  // Required for IEnumerator
-using System.Collections.Generic;
+using System.Collections;
 
 public class LocationFetcher : MonoBehaviour
 {
-    [Header("UI Elements")]
-    public InputField destinationInput;
-    public Text statusText;
-    public Text distanceText;  // For displaying the distance
-    public GoogleMapsService googleMapsService;
-    public ARNavigation arNavigation;
-
-    private float userLatitude;
-    private float userLongitude;
+    public InputField destinationInput;     // Destination input field
+    public Text statusText;                 // Status display
+    public GoogleMapsService googleMapsService;  // Reference to Google Maps Service
 
     private void Start()
     {
-        // Initialize components
-        googleMapsService = FindObjectOfType<GoogleMapsService>();
-        arNavigation = FindObjectOfType<ARNavigation>();
+        if (googleMapsService == null)
+        {
+            googleMapsService = FindObjectOfType<GoogleMapsService>();
+            if (googleMapsService == null)
+            {
+                Debug.LogError("Google Maps Service is not assigned or missing in the scene!");
+                statusText.text = "Google Maps Service unavailable.";
+            }
+        }
 
-        // Start getting the user's current location
-        StartCoroutine(GetUserLocation());
+        if (destinationInput == null || statusText == null)
+        {
+            Debug.LogError("InputField or Text component not assigned in LocationFetcher!");
+        }
     }
 
+    // Called when the search button is clicked
+    // Assuming this is your current OnSearchButtonClicked method
     public void OnSearchButtonClicked()
     {
         string address = destinationInput.text.Trim();
 
-        if (!string.IsNullOrEmpty(address))
+        if (string.IsNullOrEmpty(address))
         {
-            statusText.text = "Fetching location...";
+            statusText.text = "Please enter a valid destination.";
+            return;
+        }
+
+        statusText.text = "Fetching location...";
+
+        if (googleMapsService != null)
+        {
             StartCoroutine(googleMapsService.GetCoordinates(address, OnCoordinatesReceived));
         }
         else
         {
-            statusText.text = "Please enter a valid destination.";
+            statusText.text = "Service unavailable.";
+            Debug.LogError("Google Maps Service is not assigned!");
         }
     }
 
-    private void OnCoordinatesReceived(float destLat, float destLng)
+    // Called after receiving coordinates
+    private void OnCoordinatesReceived(float lat, float lng)
     {
-        // Request distance calculation
-        StartCoroutine(googleMapsService.GetDistance(userLatitude, userLongitude, destLat, destLng, OnDistanceReceived));
-
-        // Proceed to AR navigation
-        Vector3 destination = new Vector3(destLat, 0, destLng);
-        arNavigation.SetDestination(destination);
-    }
-
-    private void OnDistanceReceived(string distance)
-    {
-        distanceText.text = $"Distance: {distance}";
-        statusText.text = "Distance calculated. Starting AR navigation!";
-    }
-
-    private IEnumerator GetUserLocation()
-    {
-        if (!Input.location.isEnabledByUser)
+        if (lat != 0 && lng != 0)
         {
-            statusText.text = "Location services are disabled.";
-            yield break;
-        }
-
-        Input.location.Start();
-        int maxWait = 20;
-
-        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
-        {
-            yield return new WaitForSeconds(1);
-            maxWait--;
-        }
-
-        if (Input.location.status == LocationServiceStatus.Failed)
-        {
-            statusText.text = "Failed to get GPS location.";
+            statusText.text = $"Coordinates Found: {lat}, {lng}";
+            Debug.Log($"Coordinates Found: Latitude {lat}, Longitude {lng}");
         }
         else
         {
-            userLatitude = Input.location.lastData.latitude;
-            userLongitude = Input.location.lastData.longitude;
-            statusText.text = "Location obtained.";
+            statusText.text = "Failed to fetch coordinates. Please try again with a different address.";
+            Debug.LogError("Error: Invalid coordinates received.");
         }
-
-        Input.location.Stop();
     }
 }

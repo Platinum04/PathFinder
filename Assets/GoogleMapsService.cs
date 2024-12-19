@@ -1,55 +1,62 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+
+// Define classes for the Google Distance Matrix API response
+[System.Serializable]
+public class DistanceMatrixResponse
+{
+    public string status;
+    public Row[] rows;
+}
+
+[System.Serializable]
+public class Row
+{
+    public Element[] elements;
+}
+
+[System.Serializable]
+public class Element
+{
+    public string status; // Renamed to 'elementStatus' if conflicts occur
+    public Distance distance;
+}
+
+[System.Serializable]
+public class Distance
+{
+    public string text;
+    public int value;
+}
 
 public class GoogleMapsService : MonoBehaviour
 {
-    private const string API_KEY = "AIzaSyBeuY4Zwi0eslU4NBBcHIovxrx4cWIcib0";  // Replace with your actual API key
+    private const string API_KEY = "AIzaSyBeuY4Zwi0eslU4NBBcHIovxrx4cWIcib0";  // Use a secure method to fetch this in production
+    public Text DistanceDisplay;  // UI Text for displaying the distance
 
     /// <summary>
-    /// Fetches the distance between the user's location and destination using Google Maps Distance Matrix API.
+    /// Fetches the distance between two locations using Google Maps Distance Matrix API.
     /// </summary>
-    public IEnumerator GetDistance(float originLat, float originLng, float destLat, float destLng, System.Action<string> callback)
+    public IEnumerator GetDistance(float originLat, float originLng, float destLat, float destLng)
     {
         // Construct the API request URL
         string url = $"https://maps.googleapis.com/maps/api/distancematrix/json?origins={originLat},{originLng}&destinations={destLat},{destLng}&key={API_KEY}";
-
-        // Send the API request
         UnityWebRequest request = UnityWebRequest.Get(url);
 
+        // Send the API request
         yield return request.SendWebRequest();
+    }
 
-        // Handle request success
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            string json = request.downloadHandler.text;
+    private static string GetCoordinates1(string address, Action<float, float> onCoordinatesReceived)
+    {
+        throw new NotImplementedException();
+    }
 
-            // Debug: Log the full response
-            Debug.Log($"Full Distance Matrix Response: {json}");
-
-            // Deserialize the API response
-            DistanceMatrixResponse distanceData = JsonUtility.FromJson<DistanceMatrixResponse>(json);
-
-            // Check response validity
-            if (distanceData.status == "OK" &&
-                distanceData.rows != null &&
-                distanceData.rows.Length > 0 &&
-                distanceData.rows[0].elements.Length > 0 &&
-                distanceData.rows[0].elements[0].status == "OK")
-            {
-                // Extract and pass the distance text
-                string distanceText = distanceData.rows[0].elements[0].distance.text;
-                Debug.Log($"Distance Calculation Successful: {distanceText}");
-                callback?.Invoke(distanceText);  // Pass the result to the callback
-            }
-            else
-            {
-                Debug.LogError("Distance calculation failed: Invalid API response.");
-            }
-        }
-        else
-        {
-            Debug.LogError($"Distance Request Error: {request.error}");
-        }
+    internal string GetCoordinates(string address, Action<float, float> onCoordinatesReceived)
+    {
+        throw new NotImplementedException();
     }
 }
