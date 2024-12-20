@@ -4,32 +4,14 @@ using System.Collections;
 
 public class LocationFetcher : MonoBehaviour
 {
-    public InputField destinationInput;     // Destination input field
-    public Text statusText;                 // Status display
+    public InputField destinationInput;   // User destination input field
+    public Text statusText, UserLocation;              // Status messages display
     public GoogleMapsService googleMapsService;  // Reference to Google Maps Service
 
-    private void Start()
-    {
-        if (googleMapsService == null)
-        {
-            googleMapsService = FindObjectOfType<GoogleMapsService>();
-            if (googleMapsService == null)
-            {
-                Debug.LogError("Google Maps Service is not assigned or missing in the scene!");
-                statusText.text = "Google Maps Service unavailable.";
-            }
-        }
-
-        if (destinationInput == null || statusText == null)
-        {
-            Debug.LogError("InputField or Text component not assigned in LocationFetcher!");
-        }
-    }
-
-    // Called when the search button is clicked
-    // Assuming this is your current OnSearchButtonClicked method
+    // Called when the Search Button is clicked
     public void OnSearchButtonClicked()
     {
+        // Validate the input
         string address = destinationInput.text.Trim();
 
         if (string.IsNullOrEmpty(address))
@@ -38,11 +20,14 @@ public class LocationFetcher : MonoBehaviour
             return;
         }
 
+        // Display loading message
         statusText.text = "Fetching location...";
 
+        // Start Google Maps API request
         if (googleMapsService != null)
         {
             StartCoroutine(googleMapsService.GetCoordinates(address, OnCoordinatesReceived));
+            StartCoroutine(googleMapsService.GetUserLocation(OnUserCoordinatesReceived));
         }
         else
         {
@@ -51,7 +36,7 @@ public class LocationFetcher : MonoBehaviour
         }
     }
 
-    // Called after receiving coordinates
+    // Handle the coordinates received from Google Maps
     private void OnCoordinatesReceived(float lat, float lng)
     {
         if (lat != 0 && lng != 0)
@@ -61,7 +46,21 @@ public class LocationFetcher : MonoBehaviour
         }
         else
         {
-            statusText.text = "Failed to fetch coordinates. Please try again with a different address.";
+            statusText.text = "Failed to fetch coordinates.";
+            Debug.LogError("Error: Invalid coordinates received.");
+        }
+    }
+    // Handle the coordinates received from Google Maps
+    private void OnUserCoordinatesReceived(float lat, float lng)
+    {
+        if (lat != 0 && lng != 0)
+        {
+            UserLocation.text = $"Coordinates Found: {lat}, {lng}";
+            Debug.Log($"Coordinates Found: Latitude {lat}, Longitude {lng}");
+        }
+        else
+        {
+            UserLocation.text = "Failed to fetch coordinates.";
             Debug.LogError("Error: Invalid coordinates received.");
         }
     }
