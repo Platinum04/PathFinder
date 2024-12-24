@@ -3,9 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    // Method to load the AR Scene
+    /// <summary>
+    /// Loads the AR Navigation Scene.
+    /// </summary>
     public void LoadARScene()
     {
-        SceneManager.LoadScene("ARNavigationScene");  // Ensure this matches your AR scene name
+        SceneManager.LoadScene("ARNavigationScene"); // Replace with your AR Scene name
+    }
+
+    /// <summary>
+    /// Loads the Home Scene.
+    /// </summary>
+    public void LoadHomeScene()
+    {
+        SceneManager.LoadScene("HomeScene"); // Replace with your Home Scene name
     }
 }
