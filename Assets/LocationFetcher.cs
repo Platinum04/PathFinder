@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using UnityEngine.SceneManagement;  // For transitioning to AR Scene
 
 public class LocationFetcher : MonoBehaviour
 {
-    public InputField destinationInput;   // User destination input field
-    public Text statusText, UserLocation, destinationTxt, currentLocationText;              // Status messages display
-    public GoogleMapsService googleMapsService;  // Reference to Google Maps Service
-    public float originLat, originLng, destLat, destLng;
+    public InputField destinationInput;          // User input for destination
+    public Text statusText, UserLocation, destinationTxt, currentLocationText;  // UI status and location displays
+    public GoogleMapsService googleMapsService; // Reference to Google Maps Service
+    public float originLat, originLng, destLat, destLng;  // Coordinates for origin and destination
 
     private void Start()
     {
+        // Subscribe to GoogleMapsService events
         googleMapsService.locationData += DisplayLocationInWords;
         googleMapsService.userLocationReceived += OnUserCoordinatesReceived;
     }
@@ -48,38 +49,47 @@ public class LocationFetcher : MonoBehaviour
         if (lat != 0 && lng != 0)
         {
             statusText.text = message;
-            destLat = lat;
-            destLng = lng;
+            destLat = lat;  // Set destination latitude
+            destLng = lng;  // Set destination longitude
+
+            Debug.Log($"Destination Coordinates: Latitude {lat}, Longitude {lng}");
         }
         else
         {
             statusText.text = message;
-            Debug.LogError("Error: Invalid coordinates received.");
+            Debug.LogError("Error: Invalid destination coordinates received.");
         }
     }
-    // Handle the coordinates received from Google Maps
+
+    // Handle the user's current coordinates received via GPS
     private void OnUserCoordinatesReceived(float lat, float lng, string status)
     {
         if (lat != 0 && lng != 0)
         {
             statusText.text = status;
-            originLat = lat;
-            originLng = lng;
-            Debug.Log($"Coordinates Found: Latitude {lat}, Longitude {lng}");
+            originLat = lat;  // Set user's current latitude
+            originLng = lng;  // Set user's current longitude
+
+            Debug.Log($"User Coordinates: Latitude {lat}, Longitude {lng}");
+
+            // Call AR Navigation Manager
+            StartARNavigation();
         }
         else
         {
             statusText.text = status;
-            Debug.LogError("Error: Invalid coordinates received.");
+            Debug.LogError("Error: Invalid user coordinates received.");
         }
     }
 
+    // Display the origin and destination locations in words
     private void DisplayLocationInWords(string originAddress, string destinationAddress, string message)
     {
         if (!string.IsNullOrEmpty(originAddress))
         {
             currentLocationText.text = $"Your Location: {originAddress}";
             destinationTxt.text = $"Your Destination: {destinationAddress}";
+
             Debug.Log($"User Current Address: {originAddress}");
             Debug.Log($"User Destination Address: {destinationAddress}");
         }
@@ -89,4 +99,22 @@ public class LocationFetcher : MonoBehaviour
         }
     }
 
+    // Initiate AR Navigation
+    private void StartARNavigation()
+    {
+        // Pass coordinates to AR Navigation Manager
+        ARNavigationManager arNavigationManager = FindObjectOfType<ARNavigationManager>();
+        if (arNavigationManager != null)
+        {
+            arNavigationManager.StartNavigation(originLat, originLng, destLat, destLng);
+
+            // Transition to AR Scene
+            SceneManager.LoadScene("ARNavigationScene");
+        }
+        else
+        {
+            Debug.LogError("ARNavigationManager not found in the scene!");
+            statusText.text = "AR Navigation Manager is not available.";
+        }
+    }
 }

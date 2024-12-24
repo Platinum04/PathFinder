@@ -61,11 +61,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GeocodingDataModels.cs" />
+    <Compile Include="Assets\GPSLocationToWorld.cs" />
     <Compile Include="Assets\LocationFetcher.cs" />
     <Compile Include="Assets\GoogleMapsService.cs" />
+    <Compile Include="Assets\ARNavigationManager.cs" />
+    <Compile Include="Assets\SceneTransitionManager.cs" />
     <Compile Include="Assets\GoogleMapsDisplay.cs" />
     <Compile Include="Assets\NavigationUI.cs" />
     <Compile Include="Assets\ARNavigation.cs" />
+    <Compile Include="Assets\ARNavigationArrow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

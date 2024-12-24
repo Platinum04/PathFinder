@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|c:\\users\\hp\\desktop\\unity projects\\pathfinder\\assets\\googlemapsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\googlemapsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\assets\\locationfetcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|c:\\users\\hp\\desktop\\unity projects\\pathfinder\\assets\\locationfetcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\locationfetcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\assets\\navigationui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\navigationui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|c:\\users\\hp\\desktop\\unity projects\\pathfinder\\assets\\arnavigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\arnavigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\assets\\googlemapsdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\googlemapsdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|c:\\users\\hp\\desktop\\unity projects\\pathfinder\\assets\\gpslocationtoworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\gpslocationtoworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\assets\\geocodingdatamodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\geocodingdatamodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\assets\\arnavigation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\arnavigation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\assets\\arnavigationarrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{570A5D56-F168-89D3-7ED6-DFBFF2C66882}|Assembly-CSharp.csproj|solutionrelative:assets\\arnavigationarrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,80 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GoogleMapsDisplay.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GoogleMapsDisplay.cs",
-              "RelativeDocumentMoniker": "Assets\\GoogleMapsDisplay.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GoogleMapsDisplay.cs",
-              "RelativeToolTip": "Assets\\GoogleMapsDisplay.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T23:18:55.632Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GeocodingDataModels.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GeocodingDataModels.cs",
-              "RelativeDocumentMoniker": "Assets\\GeocodingDataModels.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GeocodingDataModels.cs",
-              "RelativeToolTip": "Assets\\GeocodingDataModels.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T05:36:38.908Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ARNavigation.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\ARNavigation.cs",
-              "RelativeDocumentMoniker": "Assets\\ARNavigation.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\ARNavigation.cs",
-              "RelativeToolTip": "Assets\\ARNavigation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T12:00:34.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NavigationUI.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\NavigationUI.cs",
-              "RelativeDocumentMoniker": "Assets\\NavigationUI.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\NavigationUI.cs",
-              "RelativeToolTip": "Assets\\NavigationUI.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwB0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T11:45:31.649Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LocationFetcher.cs",
               "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\LocationFetcher.cs",
               "RelativeDocumentMoniker": "Assets\\LocationFetcher.cs",
               "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\LocationFetcher.cs",
               "RelativeToolTip": "Assets\\LocationFetcher.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAiwG4AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T11:37:53.897Z"
+              "WhenOpened": "2024-12-24T12:37:26.637Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GoogleMapsService.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GoogleMapsService.cs",
-              "RelativeDocumentMoniker": "Assets\\GoogleMapsService.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GoogleMapsService.cs",
-              "RelativeToolTip": "Assets\\GoogleMapsService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "ARNavigationManager.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\ARNavigationManager.cs",
+              "RelativeDocumentMoniker": "Assets\\ARNavigationManager.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\ARNavigationManager.cs",
+              "RelativeToolTip": "Assets\\ARNavigationManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T10:49:14.961Z",
+              "WhenOpened": "2024-12-24T12:32:31.728Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GPSLocationToWorld.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GPSLocationToWorld.cs",
+              "RelativeDocumentMoniker": "Assets\\GPSLocationToWorld.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\GPSLocationToWorld.cs",
+              "RelativeToolTip": "Assets\\GPSLocationToWorld.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T12:25:40.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ARNavigationArrow.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\ARNavigationArrow.cs",
+              "RelativeDocumentMoniker": "Assets\\ARNavigationArrow.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\Unity Projects\\PathFinder\\Assets\\ARNavigationArrow.cs",
+              "RelativeToolTip": "Assets\\ARNavigationArrow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T12:22:12.503Z"
             }
           ]
         }
