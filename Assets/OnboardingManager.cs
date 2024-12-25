@@ -7,7 +7,6 @@ public class OnboardingManager : MonoBehaviour
     private int currentScreenIndex = 0;
 
     public Button[] nextButtons;  // Assign the "Next" buttons (size should be set to 3 in Inspector)
-    public Button[] actionButtons; // Assign the action buttons (size should be set to 3 in Inspector)
     private SceneTransitionManager sceneTransitionManager;
 
     void Start()
@@ -27,12 +26,6 @@ public class OnboardingManager : MonoBehaviour
         foreach (Button nextButton in nextButtons)
         {
             nextButton.onClick.AddListener(NextScreen);
-        }
-
-        // Add listeners for all Action buttons
-        foreach (Button actionButton in actionButtons)
-        {
-            actionButton.onClick.AddListener(ActionButtonClicked);
         }
     }
 
@@ -55,22 +48,7 @@ public class OnboardingManager : MonoBehaviour
         }
         else
         {
-            // Load the Home Scene when onboarding is complete
-            sceneTransitionManager.LoadHomeScene();
-        }
-    }
-
-    void ActionButtonClicked()
-    {
-        currentScreenIndex++;
-
-        if (currentScreenIndex < onboardingScreens.Length)
-        {
-            ShowScreen(currentScreenIndex);
-        }
-        else
-        {
-            // Load the Home Scene when onboarding is complete
+            // Load Home Scene when onboarding is complete
             sceneTransitionManager.LoadHomeScene();
         }
     }
