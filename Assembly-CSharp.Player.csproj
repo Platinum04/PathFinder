@@ -64,6 +64,8 @@
     <Compile Include="Assets\GPSLocationToWorld.cs" />
     <Compile Include="Assets\LocationFetcher.cs" />
     <Compile Include="Assets\GoogleMapsService.cs" />
+    <Compile Include="Assets\SplashScreenManager.cs" />
+    <Compile Include="Assets\OnboardingManager.cs" />
     <Compile Include="Assets\ARNavigationManager.cs" />
     <Compile Include="Assets\SceneTransitionManager.cs" />
     <Compile Include="Assets\GoogleMapsDisplay.cs" />
