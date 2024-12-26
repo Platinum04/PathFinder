@@ -3,53 +3,39 @@ using UnityEngine.UI;
 
 public class OnboardingManager : MonoBehaviour
 {
-    public GameObject[] onboardingScreens;  // Assign all panels/screens
-    private int currentScreenIndex = 0;
+    public GameObject[] onboardingSteps; // Assign all three onboarding steps here
+    private int currentStepIndex = 0;
 
-    public Button[] nextButtons;  // Assign the "Next" buttons (size should be set to 3 in Inspector)
-    private SceneTransitionManager sceneTransitionManager;
+    private ScreenManager screenManager;
 
     void Start()
     {
-        // Find the SceneTransitionManager in the scene
-        sceneTransitionManager = FindObjectOfType<SceneTransitionManager>();
+        screenManager = FindObjectOfType<ScreenManager>();
+        ShowCurrentStep();
 
-        if (sceneTransitionManager == null)
-        {
-            Debug.LogError("SceneTransitionManager not found in the scene!");
-            return;
-        }
-
-        ShowScreen(0);  // Start with the first screen
-
-        // Add listeners for all Next buttons
-        foreach (Button nextButton in nextButtons)
-        {
-            nextButton.onClick.AddListener(NextScreen);
-        }
+        // Optionally add listeners to buttons if they are not set in the Inspector
+        // Example: 
+        // Button nextButton = onboardingSteps[currentStepIndex].GetComponentInChildren<Button>();
+        // nextButton.onClick.AddListener(NextStep);
     }
 
-    void ShowScreen(int index)
+    public void NextStep()
     {
-        // Enable the current screen and disable others
-        for (int i = 0; i < onboardingScreens.Length; i++)
-        {
-            onboardingScreens[i].SetActive(i == index);
-        }
-    }
+        currentStepIndex++;
 
-    void NextScreen()
-    {
-        currentScreenIndex++;
-
-        if (currentScreenIndex < onboardingScreens.Length)
+        if (currentStepIndex < onboardingSteps.Length)
         {
-            ShowScreen(currentScreenIndex);
+            ShowCurrentStep();
         }
         else
         {
-            // Load Home Scene when onboarding is complete
-            sceneTransitionManager.LoadHomeScene();
+            screenManager.ShowHomeScreen(); // Go to Home when done
         }
+    }
+
+    private void ShowCurrentStep()
+    {
+        for (int i = 0; i < onboardingSteps.Length; i++)
+            onboardingSteps[i].SetActive(i == currentStepIndex); // Only show current step
     }
 }
