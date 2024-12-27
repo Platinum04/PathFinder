@@ -8,6 +8,7 @@ public class LocationFetcher : MonoBehaviour
     public Text statusText, UserLocation, destinationTxt, currentLocationText;  // UI status and location displays
     public GoogleMapsService googleMapsService; // Reference to Google Maps Service
     public float originLat, originLng, destLat, destLng;  // Coordinates for origin and destination
+    public GameObject resultScreen, homeScreen;
 
     private void Start()
     {
@@ -53,6 +54,8 @@ public class LocationFetcher : MonoBehaviour
             destLng = lng;  // Set destination longitude
 
             Debug.Log($"Destination Coordinates: Latitude {lat}, Longitude {lng}");
+            homeScreen.SetActive(false);
+            resultScreen.SetActive(true);
         }
         else
         {
@@ -71,9 +74,6 @@ public class LocationFetcher : MonoBehaviour
             originLng = lng;  // Set user's current longitude
 
             Debug.Log($"User Coordinates: Latitude {lat}, Longitude {lng}");
-
-            // Call AR Navigation Manager
-            StartARNavigation();
         }
         else
         {
@@ -96,25 +96,6 @@ public class LocationFetcher : MonoBehaviour
         else
         {
             statusText.text = message;
-        }
-    }
-
-    // Initiate AR Navigation
-    private void StartARNavigation()
-    {
-        // Pass coordinates to AR Navigation Manager
-        ARNavigationManager arNavigationManager = FindObjectOfType<ARNavigationManager>();
-        if (arNavigationManager != null)
-        {
-            arNavigationManager.StartNavigation(originLat, originLng, destLat, destLng);
-
-            // Transition to AR Scene
-            SceneManager.LoadScene("ARNavigationScene");
-        }
-        else
-        {
-            Debug.LogError("ARNavigationManager not found in the scene!");
-            statusText.text = "AR Navigation Manager is not available.";
         }
     }
 }

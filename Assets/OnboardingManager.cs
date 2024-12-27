@@ -29,6 +29,10 @@ public class OnboardingManager : MonoBehaviour
         }
         else
         {
+            foreach (GameObject screen in onboardingSteps)
+            {
+                screen.SetActive(false);
+            }
             screenManager.ShowHomeScreen(); // Go to Home when done
         }
     }
