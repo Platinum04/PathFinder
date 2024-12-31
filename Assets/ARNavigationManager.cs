@@ -11,17 +11,15 @@ public class ARNavigationManager : MonoBehaviour
     public Text statusTxt, locationTxt;
 
     private const float EarthRadius = 6371000; // Radius of Earth in meters
+    private GameObject arrowInstance; // Track the arrow instance
+    private Vector3 destinationUnityPosition; // Destination in Unity world space
 
     public static Vector3 GPSPointToUnityVector(float originLat, float originLon, float targetLat, float targetLon)
     {
-        // Calculate differences
         float dLat = Mathf.Deg2Rad * (targetLat - originLat);
         float dLon = Mathf.Deg2Rad * (targetLon - originLon);
-
-        // Convert latitude to radians
         float lat1 = Mathf.Deg2Rad * originLat;
 
-        // Calculate the horizontal distances
         float x = EarthRadius * dLon * Mathf.Cos(lat1);
         float z = EarthRadius * dLat;
 
@@ -30,55 +28,57 @@ public class ARNavigationManager : MonoBehaviour
 
     public void StartARNavigation()
     {
-        StartCoroutine(PlaceDestinationMarker());
+        StartCoroutine(InitializeDestination());
     }
 
-    IEnumerator PlaceDestinationMarker()
+    IEnumerator InitializeDestination()
     {
         // Wait for GPSManager to initialize GPS
         yield return new WaitUntil(() => locationFetcher.originLat != 0 && locationFetcher.originLng != 0);
 
-        // Convert destination GPS to Unity coordinates
-        Vector3 unityPosition = GPSPointToUnityVector(
+        // Calculate the Unity position of the destination
+        destinationUnityPosition = GPSPointToUnityVector(
             locationFetcher.originLat,
             locationFetcher.originLng,
             locationFetcher.destLat,
             locationFetcher.destLng
         );
 
-        locationTxt.text = locationFetcher.originLat.ToString() + ", " + locationFetcher.originLng.ToString() + ", " + locationFetcher.destLat.ToString() + ", " + locationFetcher.destLng.ToString();
-        // Place the AR object at the calculated position
-        PlaceObjectAtUnityPosition(unityPosition);
+        locationTxt.text = locationFetcher.originLat.ToString() + ", " + locationFetcher.originLng.ToString() + ", " +
+                           locationFetcher.destLat.ToString() + ", " + locationFetcher.destLng.ToString();
+
+        // Instantiate the arrow
+        arrowInstance = Instantiate(arPrefab, Vector3.zero, Quaternion.identity);
+
+        // Start updating the arrow's position and orientation in real-time
+        StartCoroutine(UpdateArrowPosition());
     }
 
-
-    // Method to place an object at a specified Unity world position
-    public void PlaceObjectAtUnityPosition(Vector3 unityPosition)
+    IEnumerator UpdateArrowPosition()
     {
-        // Create a new GameObject for the anchor
-        GameObject anchorObject = new GameObject("ARAnchorObject");
-
-        // Set the object's position and rotation
-        anchorObject.transform.position = unityPosition;
-        anchorObject.transform.rotation = Quaternion.identity;
-
-        // Add ARAnchor component to the GameObject
-        ARAnchor anchor = anchorObject.AddComponent<ARAnchor>();
-
-        if (anchor != null)
+        while (true)
         {
-            Vector3 testPosition = new Vector3(0, 0, 1); // 1 meter in front of the camera
-            Instantiate(arPrefab, testPosition, Quaternion.identity);
+            // Fetch current location
+            Vector3 currentUnityPosition = GPSPointToUnityVector(
+                locationFetcher.originLat,
+                locationFetcher.originLng,
+                locationFetcher.originLat, // Use updated origin GPS here
+                locationFetcher.originLng
+            );
 
-            // Instantiate the AR prefab at the anchor's position
-            //Instantiate(arPrefab, anchor.transform.position, anchor.transform.rotation);
-            Debug.Log("AR Object placed successfully.");
-            statusTxt.text = "AR Object placed successfully.";
-        }
-        else
-        {
-            Debug.Log("Failed to create AR Anchor.");
-            statusTxt.text = "Failed to create AR Anchor.";
+            // Calculate direction to destination
+            Vector3 directionToDestination = (destinationUnityPosition - currentUnityPosition).normalized;
+
+            // Update arrow's position (optional: offset to be in front of the camera)
+            arrowInstance.transform.position = currentUnityPosition + directionToDestination * 0.5f; // Offset for visibility
+
+            // Update arrow's rotation to point towards the destination
+            arrowInstance.transform.rotation = Quaternion.LookRotation(directionToDestination);
+
+            // Update status text for debugging
+            statusTxt.text = $"Arrow Updated: {currentUnityPosition} -> {destinationUnityPosition}";
+
+            yield return new WaitForSeconds(1f); // Update every second
         }
     }
 }

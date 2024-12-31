@@ -7,10 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Pathfinder.unity
-    guid: de931979344ed3e4ebe6397d59e211d1
-  - enabled: 0
-    path: Assets/Scenes/New Scene.unity
-    guid: 9ab93d186d5b67e42b39b908e82aec91
+    guid: b770cc7b7d7f77d4498bd272a0de21d9
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c7abbb5eafb26ae40b1b092e49113576,
       type: 2}
